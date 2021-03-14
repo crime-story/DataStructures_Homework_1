@@ -43,7 +43,7 @@ int i, n, j, ok, nrtest, k, r,nrcif;
 
 void BubbleSort()
 {
-    for(i=0; i<n-1; i++) // numarul pasi = numar - 1, deci avem n-1 pasi intotdeauna
+    for(i=0; i<n-1; i++) // numarul pasi = lungime - 1, deci avem n-1 pasi intotdeauna
     {
         ok = 0; // initializam un ok cu 0, presupunem ca vectorul este sortat
         t_stop10 = clock();
