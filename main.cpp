@@ -327,10 +327,10 @@ int main()
         }
 
         cout << "Introduceti maximul din array: ";
-        cin >> nrmaxi; /// citim elementul maxim din array
+        cin >> nrmaxi; // citim elementul maxim din array
         if(tip==1)
         {
-            unsigned long long x=random()%nrmaxi;///generez primul termen din vector random
+            unsigned long long x=random()%nrmaxi; // generez primul termen din vector random
             v[n-1]=x;
             for(i=n-2; i>=0; i--)
                 if(v[i+1]-1==0)
@@ -475,8 +475,6 @@ int main()
         quickSort1(0,n-1);
         t_stop = clock();
         seconds5 = (double)(t_stop-t_start)/CLOCKS_PER_SEC;
-        //start = getTime();
-        //durata = getTime() - start;
         cout <<"\nArray-ul sortat pentru Quick Sort stabilind ca pivot ultimul element este:\n";
         for(i=0; i<n; i++)
             cout << v[i] << " ";
@@ -533,9 +531,21 @@ int main()
             cout << v[i] << " ";
         cout<<"\nTimpul de executie al programului pentru functia nativa sort " << setprecision(20)<<seconds8<< "s\n";
 
+        cout<<endl;
 
 ///-----------------------------------------------------
         cout<<"IN CONCLUZIE, TIMPII DE EXECUTIE PENTRU TESTUL "<<nrtest-1<<" sunt\n";
+        cout<<"\nNumarul de elemente este: "<<n<<".\n";
+        if(tip==1)
+            cout<<"\nTipul de test este pentru un array sortat crescator.\n";
+        if(tip==2)
+            cout<<"\nTipul de test este pentru un array sortat descrescator.\n";
+        if(tip==3)
+            cout<<"\nTipul de test este pentru un array constant.\n";
+        if(tip==4)
+            cout<<"\nTipul de test este pentru un array generat random.\n";
+        cout<<"\nSortarea Radix a fost facuta pentru "<<nrbaze<<" baze.\n";
+
         cout<<"\nTimpul de executie al programului pentru metoda Bubble Sort este " <<setprecision(20)<<seconds1<<"s\n";
         cout<<"\nTimpul de executie al programului pentru metoda Counting Sort este " <<setprecision(20)<<seconds2<< "s\n";
         cout<<"\nTimpul de executie al programului pentru metoda Merge Sort este " <<setprecision(20)<<seconds3<< "s\n";
