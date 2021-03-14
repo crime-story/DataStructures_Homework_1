@@ -114,52 +114,52 @@ void CountingSort()
 
 void interclas(int p,int poz,int u)///apel functie de interclasare
 {
-if(ok3==0)
-{
-
-    int i=p;///retin prima pozitie a primei jumatati
-    int j=poz+1;///retin prima pozitie a celei de a 2 a jumatati
-    int k=0;///index vector sortat
-    while(i<=poz && j<=u)///cat timp nu s-a terminat de parcurs nici o jumatate
+    if(ok3==0)
     {
-        t_stop10 = clock();
-        seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
-        if(seconds10 > 10)
+
+        int i=p;///retin prima pozitie a primei jumatati
+        int j=poz+1;///retin prima pozitie a celei de a 2 a jumatati
+        int k=0;///index vector sortat
+        while(i<=poz && j<=u)///cat timp nu s-a terminat de parcurs nici o jumatate
         {
-            cout << "Ignorat MergeSort\n";
-            ok3=1;
-            break;
+            t_stop10 = clock();
+            seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
+            if(seconds10 > 10)
+            {
+                cout << "Ignorat MergeSort\n";
+                ok3=1;
+                break;
+            }
+            if (v[i]<v[j])///daca un element din prima jumatate<un element din a 2a jumatate
+                b[k++]=v[i++];///il retin intr-un alt vector
+            else///daca un element din a 2 a jumatate<un element din prima jumatate
+                b[k++]=v[j++];///il retin intr-un alt vector
         }
-        if (v[i]<v[j])///daca un element din prima jumatate<un element din a 2a jumatate
-            b[k++]=v[i++];///il retin intr-un alt vector
-        else///daca un element din a 2 a jumatate<un element din prima jumatate
-            b[k++]=v[j++];///il retin intr-un alt vector
+
+
+        while (i<=poz)///daca au mai ramas elemente in prima jumatate
+            b[k++]=v[i++];///le adaug in acelasi vector
+
+        while (j<=u)///daca au mai ramas elemente in a doua jumatate
+            b[k++]=v[j++];///le adaug in acelasi vector
+
+
+        int t=p;
+        for (k=0; k<(u-p)+1; k++)
+            v[t++]=b[k];///vectorul initial devine vectorul sortat
     }
-
-
-    while (i<=poz)///daca au mai ramas elemente in prima jumatate
-        b[k++]=v[i++];///le adaug in acelasi vector
-
-    while (j<=u)///daca au mai ramas elemente in a doua jumatate
-        b[k++]=v[j++];///le adaug in acelasi vector
-
-
-    int t=p;
-    for (k=0; k<(u-p)+1; k++)
-        v[t++]=b[k];///vectorul initial devine vectorul sortat
-}
 }
 
 void divimp(int p,int u)///apel functie divide et impera
 {
     if(ok3==0)
-    if (p<u)
-    {
-        int poz=(p+u)/2;///retin pozitia de mijloc a vectorului
-        divimp(p,poz);///apelez de la inceput pana la mijloc
-        divimp(poz+1,u);///apelez de la mijloc pana la sfarsit
-        interclas(p,poz,u);///ordoneaza  cele 2 jumatati
-    }
+        if (p<u)
+        {
+            int poz=(p+u)/2;///retin pozitia de mijloc a vectorului
+            divimp(p,poz);///apelez de la inceput pana la mijloc
+            divimp(poz+1,u);///apelez de la mijloc pana la sfarsit
+            interclas(p,poz,u);///ordoneaza  cele 2 jumatati
+        }
 }
 
 void MergeSort()
@@ -279,7 +279,7 @@ void radixSort1(int r, int baza, unsigned long long v[], int n)
 
     for (int i = 0; i < n; i++) // parcurg vectorul
     {
-         t_stop10 = clock();
+        t_stop10 = clock();
         seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
         if(seconds10 > 10)
         {
@@ -298,7 +298,7 @@ void radixSort1(int r, int baza, unsigned long long v[], int n)
         // fr[1] = fr[1] + fr[0] = 3 + 5 = 8
         // aceste sume partiale le facem pentru a afla la ce indice trebuie sa plasez elementele cu o anumita cifra
         // pastrand ordinea relativa
-         t_stop10 = clock();
+        t_stop10 = clock();
         seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
         if(seconds10 > 10)
         {
@@ -313,7 +313,7 @@ void radixSort1(int r, int baza, unsigned long long v[], int n)
         b[fr[cifra_curenta]] = v[i]; // plasez intr-un vector auxiliar b elementul v[i] pe pozitia fr[cifra_curenta]
         // pe care am stabilit-o mai sus
         fr[cifra_curenta]++; // incrementez indicele pentru a stabili pozitia pe care va fi plasat urmatorul element
-         t_stop10 = clock();
+        t_stop10 = clock();
         seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
         if(seconds10 > 10)
         {
@@ -364,7 +364,7 @@ void radix_sort_biti(unsigned long long v[], int n, int nr)   //lungimea este p,
 
     for (int i = 0; i < nr; i++)///nr reprezinta numarul maxim de biti
     {
-         t_stop10 = clock();
+        t_stop10 = clock();
         seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
         if(seconds10 > 10)
         {
@@ -482,17 +482,17 @@ int main()
 
         memcpy(w,v,sizeof(w));
         cout << "Array-ul nesortat pentru Bubble sort este \n";
-         for(i=0; i<n; i++)
-               cout << v[i] << " ";
-            cout<<endl;
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<endl;
         t_start = clock();
-       MergeSort();
+        MergeSort();
         t_stop = clock();
         seconds1 = (double)(t_stop-t_start)/CLOCKS_PER_SEC;
         cout <<"\nArray-ul sortat pentru Bubble sort este:\n";
-         for(i=0; i<n; i++)
-              cout << v[i] << " ";
-           cout<<endl;
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<endl;
         cout<<"\nTimpul de executie al programului pentru metoda Bubble Sort este " <<setprecision(8)<<seconds1<<"\n";
 ///-------------------------------------------------------
 
@@ -500,18 +500,18 @@ int main()
 
         memcpy(v,w,sizeof(w));
         cout << "Array-ul nesortat pentru Counting sort este \n";
-          for(i=0; i<n; i++)
-              cout << v[i] << " ";
-           cout<<endl;
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<endl;
         t_start = clock();
         CountingSort();
         t_stop = clock();
         seconds2 = (double)(t_stop-t_start)/CLOCKS_PER_SEC;
 
         cout <<"\nArray-ul sortat pentru Counting sort:\n";
-            for(i=0; i<n; i++)
-              cout << v[i] << " ";
-            cout<<"\nTimpul de executie al programului pentru metoda Counting Sort este " <<setprecision(8)<<seconds2<< "s\n";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<"\nTimpul de executie al programului pentru metoda Counting Sort este " <<setprecision(8)<<seconds2<< "s\n";
 
 ///-------------------------------------------------------
 
@@ -519,18 +519,18 @@ int main()
 
         memcpy(v,w,sizeof(w));
         cout << "Array-ul nesortat pentru Mergesort este \n";
-           for(i=0; i<n; i++)
-               cout << v[i] << " ";
-             cout<<endl;
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<endl;
         t_start = clock();
         MergeSort();
         t_stop = clock();
         seconds3 = (double)(t_stop-t_start)/CLOCKS_PER_SEC;
 
         cout <<"\nArray-ul sortat pentru Mergesort:\n";
-           for(i=0; i<n; i++)
-              cout << v[i] << " ";
-           cout<<"\nTimpul de executie al programului pentru metoda Merge Sort este " <<setprecision(8)<<seconds3<< "s\n";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<"\nTimpul de executie al programului pentru metoda Merge Sort este " <<setprecision(8)<<seconds3<< "s\n";
 
 ///-----------------------------------------------------
 
@@ -541,17 +541,17 @@ int main()
 
             memcpy(v,w,sizeof(w));
             cout << "Array-ul nesortat pentru Radix Sort cu baza "<<baza[index_baze]<<" este \n";
-               for(i=0; i<n; i++)
-                   cout << v[i] << " ";
-               cout<<endl;
+            for(i=0; i<n; i++)
+                cout << v[i] << " ";
+            cout<<endl;
             t_start = clock();
             RadixSort_baze(baza[index_baze]);
             t_stop = clock();
             seconds4[index_baze] = (double)(t_stop-t_start)/CLOCKS_PER_SEC;
 
             cout << "Array-ul nesortat pentru Radix Sort cu baza "<<baza[index_baze]<<" este \n";
-             for(i=0; i<n; i++)
-                  cout << v[i] << " ";
+            for(i=0; i<n; i++)
+                cout << v[i] << " ";
 
             cout<<"\nTimpul de executie al programului pentru metoda Radix Sort baza "<<baza[index_baze]<<" este "<<setprecision(8)<< seconds4[index_baze]<< "s\n";
             index_baze++;
@@ -563,16 +563,16 @@ int main()
 
         memcpy(v,w,sizeof(w));
         cout << "Array-ul nesortat pentru Quick Sort stabilind ca pivot ultimul element este \n";
-          for(i=0; i<n; i++)
-              cout << v[i] << " ";
-           cout<<endl;
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<endl;
         t_start = clock();
         quickSort1(0,n-1);
         t_stop = clock();
         seconds5 = (double)(t_stop-t_start)/CLOCKS_PER_SEC;
         cout <<"\nArray-ul sortat pentru Quick Sort stabilind ca pivot ultimul element este:\n";
-           for(i=0; i<n; i++)
-                cout << v[i] << " ";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
         cout<<"\nTimpul de executie al programului pentru metoda Quick Sort stabilind ca pivot ultimul element este " <<setprecision(20)<<seconds5<< "s\n";
 
 ///-----------------------------------------------------
@@ -581,23 +581,23 @@ int main()
 
         memcpy(v,w,sizeof(w));
         cout << "Array-ul nesortat pentru Quick Sort stabilind pivot mediana din 3 este \n";
-           for(i=0; i<n; i++)
-               cout << v[i] << " ";
-         cout<<endl;
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
+        cout<<endl;
 
         t_start = clock();
         quickSort2(0,n-1);
         t_stop = clock();
         seconds6 = 1.0* (double)(t_stop-t_start)/CLOCKS_PER_SEC;
         cout <<"\nArray-ul sortat pentru Quick Sort stabilind ca pivot mediana din 3 este:\n";
-             for(i=0; i<n; i++)
-                 cout << v[i] << " ";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
         cout<<"\nTimpul de executie al programului pentru metoda Quick Sort stabilind ca pivot mediana din 3 este " << setprecision(20)<<seconds6<< "s\n";
 
         memcpy(v,w,sizeof(w));
         cout << "Array-ul nesortat pentru Radix Sort pe biti stabilind pivot mediana din 3 este \n";
-            for(i=0; i<n; i++)
-                cout << v[i] << " ";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
         cout<<endl;
 
         t_start = clock();
@@ -605,16 +605,16 @@ int main()
         t_stop = clock();
         seconds7= 1.0* (double)(t_stop-t_start)/CLOCKS_PER_SEC;
         cout <<"\nArray-ul sortat pentru Radix Sort pe biti este:\n";
-           for(i=0; i<n; i++)
-               cout << v[i] << " ";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
         cout<<"\nTimpul de executie al programului pentru metoda Radix Sort pe biti " << setprecision(20)<<seconds7<< "s\n";
 
 ///-----------------------------------------------------
 
         memcpy(v,w,sizeof(w));
         cout << "Array-ul nesortat pentru functia nativa sort \n";
-       for(i=0; i<n; i++)
-           cout << v[i] << " ";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
         cout<<endl;
 
         t_start = clock();
@@ -622,8 +622,8 @@ int main()
         t_stop = clock();
         seconds8= 1.0* (double)(t_stop-t_start)/CLOCKS_PER_SEC;
         cout <<"\nArray-ul sortat pentru functia nativa sort:\n";
-           for(i=0; i<n; i++)
-                cout << v[i] << " ";
+        for(i=0; i<n; i++)
+            cout << v[i] << " ";
         cout<<"\nTimpul de executie al programului pentru functia nativa sort " << setprecision(20)<<seconds8<< "s\n";
 
         cout<<endl;
@@ -631,6 +631,7 @@ int main()
 ///-----------------------------------------------------
         cout<<"IN CONCLUZIE, TIMPII DE EXECUTIE PENTRU TESTUL "<<nrtest-1<<" sunt\n";
         cout<<"\nNumarul de elemente este: "<<n<<".\n";
+        cout<<"\nNumarul de maxim care poate fi in array este : "<<nrmaxi<<".\n";
         if(tip==1)
             cout<<"\nTipul de test este pentru un array sortat crescator.\n";
         if(tip==2)
