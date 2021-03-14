@@ -536,6 +536,7 @@ int main()
 ///-----------------------------------------------------
         cout<<"IN CONCLUZIE, TIMPII DE EXECUTIE PENTRU TESTUL "<<nrtest-1<<" sunt\n";
         cout<<"\nNumarul de elemente este: "<<n<<".\n";
+        cout<<"\nNumarul de maxim care poate fi in array este : "<<nrmaxi<<".\n";
         if(tip==1)
             cout<<"\nTipul de test este pentru un array sortat crescator.\n";
         if(tip==2)
