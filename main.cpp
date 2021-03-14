@@ -24,7 +24,7 @@ clock_t t_start, t_stop, t_stop10;
 double seconds1, seconds2, seconds3, seconds4[100], seconds5, seconds6, seconds7,seconds8,seconds10;
 int ok1,ok2,ok3,ok4;
 
-///Sursa: https://stackoverflow.com/questions/28115724/getting-big-random-numbers-in-c-c
+// Sursa: https://stackoverflow.com/questions/28115724/getting-big-random-numbers-in-c-c
 unsigned long random()
 {
     unsigned long long r = 0;
@@ -43,7 +43,7 @@ int i, n, j, ok, nrtest, k, r,nrcif;
 
 void BubbleSort()
 {
-    for(i=0; i<n-1; i++) // numarul pasi = numar - 1, deci avem n-1 pasi intotdeauna
+    for(i=0; i<n-1; i++) // numarul pasi = lungimea vectorului de sortat - 1, deci avem n-1 pasi intotdeauna
     {
         ok = 0; // initializam un ok cu 0, presupunem ca vectorul este sortat
         t_stop10 = clock();
@@ -117,10 +117,10 @@ void interclas(int p,int poz,int u)///apel functie de interclasare
     if(ok3==0)
     {
 
-        int i=p;///retin prima pozitie a primei jumatati
-        int j=poz+1;///retin prima pozitie a celei de a 2 a jumatati
-        int k=0;///index vector sortat
-        while(i<=poz && j<=u)///cat timp nu s-a terminat de parcurs nici o jumatate
+        int i=p; // retin prima pozitie a primei jumatati
+        int j=poz+1; // retin prima pozitie a celei de a 2 a jumatati
+        int k=0; // index vector sortat
+        while(i<=poz && j<=u) // cat timp nu s-a terminat de parcurs nici o jumatate
         {
             t_stop10 = clock();
             seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
@@ -130,35 +130,35 @@ void interclas(int p,int poz,int u)///apel functie de interclasare
                 ok3=1;
                 break;
             }
-            if (v[i]<v[j])///daca un element din prima jumatate<un element din a 2a jumatate
-                b[k++]=v[i++];///il retin intr-un alt vector
-            else///daca un element din a 2 a jumatate<un element din prima jumatate
-                b[k++]=v[j++];///il retin intr-un alt vector
+            if (v[i]<v[j]) // daca un element din prima jumatate<un element din a 2a jumatate
+                b[k++]=v[i++]; // il retin intr-un alt vector
+            else // daca un element din a 2 a jumatate<un element din prima jumatate
+                b[k++]=v[j++]; // il retin intr-un alt vector
         }
 
 
-        while (i<=poz)///daca au mai ramas elemente in prima jumatate
-            b[k++]=v[i++];///le adaug in acelasi vector
+        while (i<=poz) // daca au mai ramas elemente in prima jumatate
+            b[k++]=v[i++]; // le adaug in acelasi vector
 
-        while (j<=u)///daca au mai ramas elemente in a doua jumatate
-            b[k++]=v[j++];///le adaug in acelasi vector
+        while (j<=u) // daca au mai ramas elemente in a doua jumatate
+            b[k++]=v[j++]; // le adaug in acelasi vector
 
 
         int t=p;
         for (k=0; k<(u-p)+1; k++)
-            v[t++]=b[k];///vectorul initial devine vectorul sortat
+            v[t++]=b[k]; // vectorul initial devine vectorul sortat
     }
 }
 
-void divimp(int p,int u)///apel functie divide et impera
+void divimp(int p,int u) // apel functie divide et impera
 {
     if(ok3==0)
         if (p<u)
         {
-            int poz=(p+u)/2;///retin pozitia de mijloc a vectorului
-            divimp(p,poz);///apelez de la inceput pana la mijloc
+            int poz=(p+u)/2; // retin pozitia de mijloc a vectorului
+            divimp(p,poz); // apelez de la inceput pana la mijloc
             divimp(poz+1,u);///apelez de la mijloc pana la sfarsit
-            interclas(p,poz,u);///ordoneaza  cele 2 jumatati
+            interclas(p,poz,u); // ordoneaza  cele 2 jumatati
         }
 }
 
@@ -348,21 +348,21 @@ void RadixSort_baze(int baza)
             break;
         }
         radixSort1(r, baza, v, n); // la primul apel ordonam crescator
-        /// dupa cifra unitatilor
-        /// La al doilea apel, ordonam crescator dupa cifra zecilor
-        /// etc.
-        r *= baza; /// marim rangul cifrei dupa care facem sortarea
+        // dupa cifra unitatilor
+        // La al doilea apel, ordonam crescator dupa cifra zecilor
+        // etc.
+        r *= baza; // marim rangul cifrei dupa care facem sortarea
     }
 }
 
-void radix_sort_biti(unsigned long long v[], int n, int nr)   //lungimea este p, unde 10^p este lungimea array-ului.
+void radix_sort_biti(unsigned long long v[], int n, int nr)   // lungimea este p, unde 10^p este lungimea array-ului.
 {
 
     ///nr= pow(2, nr);
     int shift = 0;
     unsigned long long masca;
 
-    for (int i = 0; i < nr; i++)///nr reprezinta numarul maxim de biti
+    for (int i = 0; i < nr; i++) // nr reprezinta numarul maxim de biti
     {
         t_stop10 = clock();
         seconds10 = (double)(t_stop10-t_start)/CLOCKS_PER_SEC;
@@ -371,27 +371,27 @@ void radix_sort_biti(unsigned long long v[], int n, int nr)   //lungimea este p,
             cout << "Ignorat RadixSort pe biti\n";
             break;
         }
-        int p = 0;///initializez
-        masca = 1 << shift; /// masca pentru a determina bitul de pe pozitia curenta
+        int p = 0; // initializez
+        masca = 1 << shift; // masca pentru a determina bitul de pe pozitia curenta
 
-        for (int j = 0; j < n; j++)///parcurg array-ul
+        for (int j = 0; j < n; j++) // parcurg array-ul
             if ((v[j]&masca)== 0)	/// daca bitul curent este 0
             {
-                bb[p] = v[j];  ///adaug acel element intr-un vector auxiliar
-                p+=1;///incrementez dimensiunea vectorului auxiliar bb
+                bb[p] = v[j];  // adaug acel element intr-un vector auxiliar
+                p+=1; // incrementez dimensiunea vectorului auxiliar bb
             }
 
-        for (int j = 0; j < n; j++)///parcurg array-ul din nou
-            if ((v[j]&masca) != 0)	///daca bitul curent este 1
+        for (int j = 0; j < n; j++) // parcurg array-ul din nou
+            if ((v[j]&masca) != 0)	// daca bitul curent este 1
             {
-                bb[p] = v[j];///adaug acel element intr-un vector auxiliar
+                bb[p] = v[j]; // adaug acel element intr-un vector auxiliar
                 p+=1;
             }
 
-        for (int j = 0; j < n; j++) ///copiem array-ul sortat dupa bitul curent
+        for (int j = 0; j < n; j++) // copiem array-ul sortat dupa bitul curent
             v[j] = bb[j];
 
-        shift++;///trecem la urmatorul bit
+        shift++; // trecem la urmatorul bit
     }
 }
 
