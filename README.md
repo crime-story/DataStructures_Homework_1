@@ -1,7 +1,7 @@
 # DataStructures_Homework_1
-##Popescu Paullo Robertto Karloss
-###Grupa 131
-####Algoritmi de sortare:
+## Popescu Paullo Robertto Karloss
+### Grupa 131
+#### Algoritmi de sortare:
   1. BubbleSort
   2. CountingSort
   3. MergeSort
