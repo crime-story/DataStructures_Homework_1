@@ -486,7 +486,7 @@ int main()
             cout << v[i] << " ";
         cout<<endl;
         t_start = clock();
-        MergeSort();
+        BubbleSort();
         t_stop = clock();
         seconds1 = (double)(t_stop-t_start)/CLOCKS_PER_SEC;
         cout <<"\nArray-ul sortat pentru Bubble sort este:\n";
